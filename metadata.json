@@ -1,0 +1,6 @@
+{
+  "name": "RythuSeva - Crop Disease ID, Crop Care & Farming Hub",
+  "description": "Bilingual (Telugu & English) agricultural assistant for farmers: AI crop disease detection, comprehensive crop care guides, agro-weather advisories, mandi prices, and farming calculators.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
