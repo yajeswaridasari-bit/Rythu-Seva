@@ -10,6 +10,7 @@ export const TRANSLATIONS = {
       weather: "Agro Weather",
       mandi: "Mandi Prices",
       resources: "Calculators & Schemes",
+      chatbot: "n8n Chatbot",
       aiAdvisor: "Ask Agri-Advisor",
     },
     hero: {
@@ -169,6 +170,7 @@ export const TRANSLATIONS = {
       weather: "వ్యవసాయ వాతావరణం",
       mandi: "మార్కెట్ ధరలు",
       resources: "కాలిక్యులేటర్లు & పథకాలు",
+      chatbot: "n8n చాట్‌బాట్",
       aiAdvisor: "రైతు మిత్ర (AI సలహాదారు)",
     },
     hero: {

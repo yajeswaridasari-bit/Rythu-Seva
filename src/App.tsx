@@ -20,6 +20,8 @@ import { WeatherAdvisory } from "./components/WeatherAdvisory";
 import { MandiPrices } from "./components/MandiPrices";
 import { FarmingResources } from "./components/FarmingResources";
 import { AgriChatModal } from "./components/AgriChatModal";
+import { N8nChatView } from "./components/N8nChatView";
+import { Workflow } from "lucide-react";
 
 export default function App() {
   // Default to English as per request, with one-tap toggle to Telugu available
@@ -66,8 +68,15 @@ export default function App() {
               <span>{t.hero.diagnoseBtn}</span>
             </button>
             <button
+              onClick={() => setActiveTab("chatbot")}
+              className="px-5 py-3 rounded-xl bg-emerald-800 hover:bg-emerald-700 text-white font-bold text-sm transition border border-emerald-600 shadow-md flex items-center gap-2 cursor-pointer"
+            >
+              <Workflow className="w-4 h-4 text-emerald-300" />
+              <span>{lang === "te" ? "n8n చాట్‌బాట్" : "n8n AI Chatbot"}</span>
+            </button>
+            <button
               onClick={() => setActiveTab("cropCare")}
-              className="px-5 py-3 rounded-xl bg-emerald-800/80 hover:bg-emerald-800 text-white font-bold text-sm transition border border-emerald-700/80 flex items-center gap-2 cursor-pointer"
+              className="px-5 py-3 rounded-xl bg-emerald-950/60 hover:bg-emerald-900 text-stone-200 hover:text-white font-bold text-sm transition border border-emerald-800 flex items-center gap-2 cursor-pointer"
             >
               <BookOpen className="w-4 h-4" />
               <span>{t.hero.cropCareBtn}</span>
@@ -79,23 +88,27 @@ export default function App() {
       {/* Main Container */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         {activeTab === "disease" && <DiseaseIdentifier lang={lang} />}
+        {activeTab === "chatbot" && <N8nChatView lang={lang} />}
         {activeTab === "cropCare" && <CropCareHub lang={lang} />}
         {activeTab === "weather" && <WeatherAdvisory lang={lang} />}
         {activeTab === "mandi" && <MandiPrices lang={lang} />}
         {activeTab === "resources" && <FarmingResources lang={lang} />}
       </main>
 
-      {/* Floating AI Agri-Advisor / Rythu Mitra Button */}
+      {/* Floating AI Agri-Advisor / n8n Chatbot Button */}
       <div className="fixed bottom-20 lg:bottom-6 right-6 z-40">
         <button
           onClick={() => setIsAdvisorOpen(true)}
-          className="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-emerald-700 to-green-700 hover:from-emerald-800 hover:to-green-800 text-white font-bold text-sm shadow-xl shadow-emerald-950/20 transition-all transform hover:scale-105 cursor-pointer border border-emerald-600"
-          title="Ask Rythu Mitra AI"
+          className="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-emerald-800 to-teal-800 hover:from-emerald-700 hover:to-teal-700 text-white font-bold text-sm shadow-xl shadow-emerald-950/30 transition-all transform hover:scale-105 cursor-pointer border border-emerald-600"
+          title="Open n8n Chatbot"
         >
-          <div className="w-8 h-8 rounded-full bg-amber-400 text-amber-950 flex items-center justify-center font-black">
-            <MessageSquareText className="w-4 h-4" />
+          <div className="w-8 h-8 rounded-full bg-emerald-700 text-emerald-200 border border-emerald-500/50 flex items-center justify-center font-black">
+            <Workflow className="w-4 h-4" />
           </div>
-          <span className="hidden sm:inline">Rythu Mitra AI</span>
+          <div className="flex flex-col text-left">
+            <span className="text-xs leading-none font-extrabold">n8n Chatbot</span>
+            <span className="text-[10px] text-emerald-300 leading-tight">Agri Assistant</span>
+          </div>
         </button>
       </div>
 

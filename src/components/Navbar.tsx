@@ -9,6 +9,7 @@ import {
   MessageSquareText,
   PhoneCall,
   Languages,
+  Workflow,
 } from "lucide-react";
 import { Language } from "../types";
 import { TRANSLATIONS } from "../data/translations";
@@ -36,6 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: "weather", label: t.nav.weather, icon: CloudSun },
     { id: "mandi", label: t.nav.mandi, icon: TrendingUp },
     { id: "resources", label: t.nav.resources, icon: Calculator },
+    { id: "chatbot", label: t.nav.chatbot, icon: Workflow, badge: "n8n" },
   ];
 
   return (
@@ -94,7 +96,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   key={item.id}
                   onClick={() => setActiveTab(item.id)}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-semibold transition cursor-pointer ${
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-semibold transition cursor-pointer ${
                     isActive
                       ? "bg-emerald-700 text-white shadow-xs"
                       : "text-stone-700 hover:bg-stone-100 hover:text-emerald-900"
@@ -102,6 +104,17 @@ export const Navbar: React.FC<NavbarProps> = ({
                 >
                   <Icon className={`w-4 h-4 ${isActive ? "text-white" : "text-emerald-700"}`} />
                   <span>{item.label}</span>
+                  {item.badge && (
+                    <span
+                      className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded-full uppercase tracking-wider ${
+                        isActive
+                          ? "bg-amber-400 text-amber-950"
+                          : "bg-emerald-100 text-emerald-800"
+                      }`}
+                    >
+                      {item.badge}
+                    </span>
+                  )}
                 </button>
               );
             })}
@@ -138,6 +151,15 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <Icon className={`w-3.5 h-3.5 ${isActive ? "text-white" : "text-emerald-700"}`} />
               <span>{item.label}</span>
+              {item.badge && (
+                <span
+                  className={`text-[9px] font-black px-1 rounded-sm uppercase ${
+                    isActive ? "bg-amber-400 text-amber-950" : "bg-emerald-100 text-emerald-800"
+                  }`}
+                >
+                  {item.badge}
+                </span>
+              )}
             </button>
           );
         })}
